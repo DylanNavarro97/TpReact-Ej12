@@ -26,7 +26,6 @@ function App() {
     try {
       const respuesta = await fetch(EndpointURL);
       const datos = await respuesta.json();
-      console.log(datos.results)
       setNoticias(datos.results)
     } catch (error) {
       console.log(error);
