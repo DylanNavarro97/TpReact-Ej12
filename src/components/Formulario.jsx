@@ -443,7 +443,7 @@ const Formulario = ({ handleChange }) => {
     <Form className="d-md-flex justify-content-between p-4 shadow mb-4 bg-primary text-white rounded-1">
       <Container fluid className="p-0">
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-6 d-md-flex flex-md-column align-items-md-center mb-3 mb-md-0">
             <label className="fs-4 mb-2 mb-md-0">Buscar por país: </label>
             <Form.Select className="formSelect" onChange={handleChange} name="pais">
               {nombresPaises.map((pais, i) => (
@@ -454,7 +454,7 @@ const Formulario = ({ handleChange }) => {
             </Form.Select>
           </div>
 
-          <div className="col-md-6">
+          <div className="col-md-6 d-md-flex flex-md-column align-items-md-center">
             <label className="fs-4 mb-2 mb-md-0">Filtrar por categoria: </label>
             <Form.Select className="formSelect" onChange={handleChange} name="categoria">
               {categorias.map((categoria, i) => (
