@@ -7,19 +7,26 @@ import Titulo from "./components/Titulo";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [categoria, setCategoria] = useState("business");
+  const [filtroPeticion, setFiltroPeticion] = useState({
+    categoria: 'business',
+    pais: 'af'
+  })
   const [noticias, setNoticias] = useState([{}])
 
-  const EndpointURL = `https://newsdata.io/api/1/news?apikey=pub_37926519c673e2145d5ad0ba29e95e4cc8c24&category=${categoria}&language=en`;
+  const EndpointURL = `https://newsdata.io/api/1/news?apikey=pub_3792983f382da421d03c01863e7b50f5b0c3e&&country=${filtroPeticion.pais}&category=${filtroPeticion.categoria}&language=es`;
 
   const handleChange = (e) => {
-    setCategoria(e.target.value);
+    setFiltroPeticion({
+      ...filtroPeticion,
+      [e.target.name] : e.target.value
+    })
   };
 
   const realizarFetch = async () => {
     try {
       const respuesta = await fetch(EndpointURL);
       const datos = await respuesta.json();
+      console.log(datos.results)
       setNoticias(datos.results)
     } catch (error) {
       console.log(error);
@@ -28,7 +35,7 @@ function App() {
 
   useEffect(() => {
     realizarFetch();
-  }, [categoria]);
+  }, [filtroPeticion]);
 
   return (
     <>
